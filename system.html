@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our System | PeakLoop</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=27">
+    <style>
+        .system-header-section {
+            padding-top: 15rem;
+            padding-bottom: 5rem;
+            text-align: center;
+            position: relative;
+        }
+        .system-header-section h1 {
+            font-size: clamp(3.5rem, 6vw, 5.5rem);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        
+        /* Workflow Timeline */
+        .workflow-section {
+            padding: 5rem 0 10rem 0;
+            background: transparent;
+            position: relative;
+        }
+        
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding: 4rem 0;
+        }
+        
+        /* The glowing central line */
+        .timeline-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.05); /* Faint track */
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+        .timeline-glow-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--accent-orange), var(--accent-orange), transparent);
+            transform: translateX(-50%);
+            z-index: 1;
+            /* Animation to make energy flow down the pipe */
+            background-size: 100% 200%;
+            animation: flowDown 8s linear infinite;
+        }
+        
+        @keyframes flowDown {
+            0% { background-position: 0 -100%; }
+            100% { background-position: 0 100%; }
+        }
+        
+        .workflow-step {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8rem;
+            position: relative;
+            z-index: 10;
+        }
+        .workflow-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Alternating sides */
+        .workflow-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .ws-content {
+            width: 45%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 3rem;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            position: relative;
+        }
+        
+        .ws-content:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 107, 53, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+        
+        .ws-empty {
+            width: 45%; /* Balances flexbox */
+        }
+        
+        .ws-node {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent-orange);
+            border-radius: 50%;
+            z-index: 5;
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ws-node::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            animation: pulse-node 2s infinite alternate;
+        }
+        
+        @keyframes pulse-node {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.5); opacity: 1; }
+        }
+        
+        .ws-num {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .ws-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .ws-content p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        @media(max-width: 900px) {
+            .timeline-line, .timeline-glow-line, .ws-node {
+                left: 0;
+            }
+            .workflow-step, .workflow-step:nth-child(even) {
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding-left: 3rem;
+            }
+            .ws-content, .ws-empty {
+                width: 100%;
+            }
+            .ws-empty { display: none; }
+            .ws-node { top: 3rem; }
+        }
+    </style>
+    <script>
+        if (
+            (performance.getEntriesByType && performance.getEntriesByType("navigation")[0] && performance.getEntriesByType("navigation")[0].type === "reload") ||
+            window.performance.navigation.type === 1
+        ) {
+            window.location.href = "index.html";
+        }
+    </script>
+</head>
+<body>
+    <!-- Volumetric Glow Backgrounds & Particles -->
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+    <div class="bg-glow glow-3"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="PeakLoop Logo" class="logo-img">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#hero" class="nav-link" data-magnetic>Home</a>
+                <a href="index.html#services" class="nav-link" data-magnetic>Services</a>
+                <a href="system.html" class="nav-link" data-magnetic>System</a>
+                <a href="index.html#about" class="nav-link" data-magnetic>About</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="smooth-wrapper">
+        <div id="smooth-content" class="cosmic-page-bg">
+            <!-- Page-wide Starfield Background -->
+            <div class="global-stars"></div>
+
+            <!-- Floating 3D Gyroscope (Left) -->
+            <div class="gyro-3d gyro-hero-left" style="position: absolute; left: 4%; top: 20%; opacity: 0.45; pointer-events: none; z-index: 1;">
+                <div class="gyro-inner">
+                    <div class="gyro-ring ring-1"></div>
+                    <div class="gyro-ring ring-2"></div>
+                    <div class="gyro-ring ring-3"></div>
+                    <div class="gyro-center"></div>
+                </div>
+            </div>
+            
+            <!-- Floating 3D Gyroscope (Right) -->
+            <div class="gyro-3d gyro-hero-right" style="position: absolute; right: 4%; top: 60%; opacity: 0.45; pointer-events: none; z-index: 1;">
+                <div class="gyro-inner">
+                    <div class="gyro-ring ring-1"></div>
+                    <div class="gyro-ring ring-2"></div>
+                    <div class="gyro-ring ring-3"></div>
+                    <div class="gyro-center"></div>
+                </div>
+            </div>
+
+            <section class="system-header-section">
+                <img src="logo.png" class="hero-bg-logo" alt="" style="top: 30%;">
+                
+                <div class="container relative z-10">
+                    <h1>The Growth <span class="accent-orange italic-text" style="font-family: var(--font-heading);">System</span></h1>
+                    <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto; font-size:1.2rem; line-height: 1.6;">
+                        A relentless 5-step workflow engineered to turn scattered views into highly predictable revenue. We remove the guesswork and scale with mathematical precision.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 5-Step Workflow Timeline -->
+            <section class="workflow-section">
+                <div class="container">
+                    <div class="timeline-container">
+                        
+                        <div class="timeline-line"></div>
+                        <div class="timeline-glow-line"></div>
+
+                        <!-- Step 1 -->
+                        <div class="workflow-step">
+                            <div class="ws-content">
+                                <span class="ws-num">Step 01</span>
+                                <h3>Strategy</h3>
+                                <p>We define your ideal audience, identify what they care about, and build content around their biggest pain points. We focus on one niche and one platform, analyze top-performing competitors, and reverse-engineer what works. Then, we create clear content pillars and a strategy designed to help the algorithm consistently reach the right audience.</p>
+                            </div>
+                            <div class="ws-node"></div>
+                            <div class="ws-empty"></div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="workflow-step">
+                            <div class="ws-content">
+                                <span class="ws-num">Step 02</span>
+                                <h3>Idea Generation</h3>
+                                <p>We track top creators in your niche, analyze their best-performing content, and break down the core components that drive high retention. By remixing these proven elements, we generate a custom bank of 30+ ready-to-film, validated content concepts so you never have to start from scratch.</p>
+                            </div>
+                            <div class="ws-node"></div>
+                            <div class="ws-empty"></div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="workflow-step">
+                            <div class="ws-content">
+                                <span class="ws-num">Step 03</span>
+                                <h3>Scripting</h3>
+                                <p>We lock the title and packaging first, then build the script around delivering on that promise. We write scroll-stopping hooks using proven formats that grab attention instantly. The body is structured to increase value and curiosity, keeping viewers engaged until the payoff. Every transition acts as a rehook, while the CTA is naturally woven into the content to drive action.</p>
+                            </div>
+                            <div class="ws-node"></div>
+                            <div class="ws-empty"></div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="workflow-step">
+                            <div class="ws-content">
+                                <span class="ws-num">Step 04</span>
+                                <h3>Production Guidance</h3>
+                                <p>We provide comprehensive direction on framing, lighting, and gear setup to ensure your videos look and sound incredibly premium. You receive personalized feedback on your delivery, pacing, and hooks to keep viewers hooked from the very first frame. By holding your hand through the entire filming process, we eliminate all technical confusion and camera anxiety. We guide you step-by-step through batch-recording sessions so you can shoot weeks of high-converting content in just a couple of hours. Our detailed production briefs guarantee that you always know exactly what to say, how to say it, and how to capture flawless takes.</p>
+                            </div>
+                            <div class="ws-node"></div>
+                            <div class="ws-empty"></div>
+                        </div>
+
+                        <!-- Step 5 -->
+                        <div class="workflow-step">
+                            <div class="ws-content">
+                                <span class="ws-num">Step 05</span>
+                                <h3>Video Editing</h3>
+                                <p>The first cut is built around retention, removing anything that doesn't move the story forward. Motion, zooms, and keyframes are strategically added to keep attention high without feeling overwhelming. Supporting visuals are placed exactly where they strengthen the message, turning explanations into proof. Sound design is layered into key moments to add energy, impact, and engagement. Every final cut is reviewed against the script to ensure the hook, rehooks, and payoff land exactly as intended.</p>
+                            </div>
+                            <div class="ws-node"></div>
+                            <div class="ws-empty"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section" style="padding: 5rem 0 10rem 0;">
+                <div class="cta-content">
+                    <h2 class="cta-title mouse-respond">Ready to Initiate the <span class="accent-orange italic-text" style="font-family: var(--font-heading);">System?</span></h2>
+                    <a href="https://calendly.com/bhargav-peakloopagency/30min" target="_blank" rel="noopener noreferrer" class="btn btn-massive btn-3d" data-magnetic style="margin-top: 2rem;">
+                        START BUILDING TODAY
+                        <div class="ripple"></div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-container">
+                    <div class="footer-brand">
+                        <img src="logo.png" alt="PeakLoop Logo" class="footer-logo">
+                    </div>
+                    <div class="footer-contact" style="color: var(--text-secondary); margin-left: 2rem;">
+                        <p style="margin-bottom: 0.5rem;">&#9742; +91-9133802992</p>
+                        <p>&#9993; bhargav@peakloopagency.com</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Peakloop. All rights reserved.</p>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js?v=26"></script></script>
+</body>
+</html>

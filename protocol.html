@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol Breakdown | PeakLoop</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=25">
+    <style>
+        .protocol-header-section {
+            padding-top: 15rem;
+            padding-bottom: 5rem;
+            text-align: center;
+            position: relative;
+        }
+        .protocol-header-section h1 {
+            font-size: clamp(3.5rem, 6vw, 5.5rem);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .protocol-details-section {
+            padding: 5rem 0 10rem 0;
+            background: transparent;
+        }
+    </style>
+    <script>
+        if (
+            (performance.getEntriesByType && performance.getEntriesByType("navigation")[0] && performance.getEntriesByType("navigation")[0].type === "reload") ||
+            window.performance.navigation.type === 1
+        ) {
+            window.location.href = "index.html";
+        }
+    </script>
+</head>
+<body>
+    <!-- Volumetric Glow Backgrounds & Particles -->
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+    <div class="bg-glow glow-3"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="PeakLoop Logo" class="logo-img">
+            </a>
+            <div class="nav-links">
+                <a href="index.html#hero" class="nav-link" data-magnetic>Home</a>
+                <a href="index.html#services" class="nav-link" data-magnetic>Services</a>
+                <a href="system.html" class="nav-link" data-magnetic>System</a>
+                <a href="index.html#about" class="nav-link" data-magnetic>About</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="smooth-wrapper">
+        <div id="smooth-content" class="cosmic-page-bg">
+            <!-- Page-wide Starfield Background -->
+            <div class="global-stars"></div>
+
+            <!-- Floating 3D Gyroscope (Left) -->
+            <div class="gyro-3d gyro-hero-left" style="position: absolute; left: 4%; top: 20%; opacity: 0.45; pointer-events: none; z-index: 1;">
+                <div class="gyro-inner">
+                    <div class="gyro-ring ring-1"></div>
+                    <div class="gyro-ring ring-2"></div>
+                    <div class="gyro-ring ring-3"></div>
+                    <div class="gyro-center"></div>
+                </div>
+            </div>
+            
+            <!-- Floating 3D Gyroscope (Right) -->
+            <div class="gyro-3d gyro-hero-right" style="position: absolute; right: 4%; top: 60%; opacity: 0.45; pointer-events: none; z-index: 1;">
+                <div class="gyro-inner">
+                    <div class="gyro-ring ring-1"></div>
+                    <div class="gyro-ring ring-2"></div>
+                    <div class="gyro-ring ring-3"></div>
+                    <div class="gyro-center"></div>
+                </div>
+            </div>
+
+            <section class="protocol-header-section">
+                <!-- Blurred background logo -->
+                <img src="logo.png" class="hero-bg-logo" alt="" style="top: 30%;">
+                
+                <div class="container relative z-10">
+                    <h1>Protocol <span class="accent-orange italic-text" style="font-family: var(--font-heading);">Breakdown</span></h1>
+                    <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto; font-size:1.2rem; line-height: 1.6;">
+                        A detailed deep dive into the operational mechanics behind the PeakLoop growth engine. Explore the four pillars that turn attention into a compounding asset.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Protocol Details Section -->
+            <section class="protocol-details-section">
+                <div class="container">
+
+                    <!-- Protocol 1 -->
+                    <div id="protocol-architecture" class="protocol-block" style="min-height: 50vh;">
+                        <span class="pb-num">01</span>
+                        <div class="pb-content">
+                            <h3>Strategic Architecture</h3>
+                            <p style="margin-bottom: 1.5rem;">We analyze your entire market geometry and current funnels to map out a precision-guided strategy. Every asset we deploy is engineered to drive targeted, high-intent traffic directly into your pipeline.</p>
+                            <p>Content creation without a system is merely a gamble. Our Strategic Architecture phase eliminates guesswork. We run comprehensive data audits on your competitors, define exact viewer avatars, and create rigid content pillars. This ensures that when we hit record, we already know exactly who we are targeting and precisely how they will convert.</p>
+                        </div>
+                    </div>
+
+                    <!-- Protocol 2 -->
+                    <div id="protocol-audience" class="protocol-block" style="min-height: 50vh;">
+                        <span class="pb-num">02</span>
+                        <div class="pb-content">
+                            <h3>Audience Acquisition</h3>
+                            <p style="margin-bottom: 1.5rem;">Algorithmic alignment is not luck; it's a science. We execute rapid A/B testing on hooks, formats, and pacing to permanently lock into the feeds of your most valuable demographic.</p>
+                            <p>We don't buy attention; we hack it. By dissecting short-form video retention graphs, we optimize the first 3 seconds of every video to achieve greater than 70% viewership. Once we acquire the audience's attention, we utilize psychological pacing and narrative structures to keep them watching until the final call to action.</p>
+                        </div>
+                    </div>
+
+                    <!-- Protocol 3 -->
+                    <div id="protocol-editing" class="protocol-block" style="min-height: 50vh;">
+                        <span class="pb-num">03</span>
+                        <div class="pb-content">
+                            <h3>Cinematic Editing</h3>
+                            <p style="margin-bottom: 1.5rem;">Attention is the new oil, and retention is how we refine it. We elevate raw footage with cinematic color grading, visceral sound design, and hypnotic motion graphics to command absolute focus.</p>
+                            <p>In a feed full of generic templates, extreme quality is the ultimate pattern interrupt. Our editing team doesn't just cut clips; they build experiences. Using advanced VFX, 3D tracking, and intricate soundscapes, we transform standard talking-head videos into premium micro-documentaries that exude authority and luxury.</p>
+                        </div>
+                    </div>
+
+                    <!-- Protocol 4 -->
+                    <div id="protocol-branding" class="protocol-block" style="min-height: 50vh;">
+                        <span class="pb-num">04</span>
+                        <div class="pb-content">
+                            <h3>Brand Positioning</h3>
+                            <p style="margin-bottom: 1.5rem;">We don't just build an audience; we build a cult of personality. By cultivating a distinct, authoritative voice, we ensure your brand transcends being a commodity and becomes the undeniable industry standard.</p>
+                            <p>Views are meaningless if they don't trust you. We architect your content so that every video reinforces your unique value proposition. By the time a viewer decides to click your link or buy your service, they are already pre-sold by hundreds of hours of high-status, omnipresent brand positioning.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-container">
+                    <div class="footer-brand">
+                        <img src="logo.png" alt="PeakLoop Logo" class="footer-logo">
+                    </div>
+                    <div class="footer-contact" style="color: var(--text-secondary); margin-left: 2rem;">
+                        <p style="margin-bottom: 0.5rem;">&#9742; +91-9133802992</p>
+                        <p>&#9993; bhargav@peakloopagency.com</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Peakloop. All rights reserved.</p>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js?v=25"></script>
+</body>
+</html>
